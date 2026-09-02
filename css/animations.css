@@ -1,0 +1,107 @@
+/* ============================================================
+   OYO FITNESS CENTER — ANIMATIONS & POLISH
+   Style conservé : noir #090909, néon #d8ff3e, titres condensés
+   ============================================================ */
+
+/* ---------- Barre de progression de scroll ---------- */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--green);z-index:40;box-shadow:0 0 12px #d8ff3e99;border-radius:0 3px 3px 0;transition:width .1s linear}
+
+/* ---------- Header compact au scroll ---------- */
+.header{transition:transform .45s cubic-bezier(.2,.7,.2,1),height .35s ease,top .35s ease,box-shadow .35s ease,background .35s ease}
+.header.scrolled{top:10px;height:56px;box-shadow:0 12px 40px #000a}
+.header.hide{transform:translateY(-130%)}
+.header nav a{position:relative;padding:6px 0}
+.header nav a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:var(--green);border-radius:2px;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.header nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.headcta{transition:transform .25s ease,box-shadow .25s ease}
+.headcta:hover{transform:translateY(-2px);box-shadow:0 0 22px #d8ff3e66}
+
+/* ---------- Entrée du hero (staggered) ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.heroin>*{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) both}
+.heroin>*:nth-child(1){animation-delay:.15s}
+.heroin>*:nth-child(2){animation-delay:.3s}
+.heroin>*:nth-child(3){animation-delay:.5s}
+.heroin>*:nth-child(4){animation-delay:.65s}
+.herofoot span{animation:fadeUp 1s .9s cubic-bezier(.2,.7,.2,1) both}
+.heroimg{will-change:transform}
+
+/* ---------- Reveal au scroll (classe ajoutée par JS) ---------- */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);will-change:opacity,transform}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- Boutons : lift + balayage lumineux ---------- */
+.btn{position:relative;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,background .25s ease}
+.btn::before{content:"";position:absolute;top:0;left:-80%;width:60%;height:100%;background:linear-gradient(105deg,transparent,#ffffff2e,transparent);transform:skewX(-20deg);transition:left .5s ease}
+.btn:hover::before{left:130%}
+.btn:hover{transform:translateY(-3px)}
+.btn.green:hover{box-shadow:0 8px 30px #d8ff3e55}
+.btn:not(.green):hover{border-color:var(--green);color:var(--green)}
+.btn:active{transform:translateY(-1px) scale(.98)}
+
+/* ---------- Cartes services / coachs / tarifs ---------- */
+.cards article,.coaches article,.prices article{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease;will-change:transform}
+.cards article:hover,.coaches article:hover,.prices article:hover{transform:translateY(-8px);box-shadow:0 24px 60px #000c}
+.coaches article img{transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .7s ease}
+.coaches article:hover img{transform:scale(1.06);filter:saturate(1.15)}
+.prices article.featured label{animation:glowPulse 2.6s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 0 #d8ff3e00}50%{box-shadow:0 0 18px #d8ff3e66}}
+.gallery button{overflow:hidden}
+.gallery button img{transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease}
+.gallery button:hover img{transform:scale(1.08)}
+.gallery button::after{content:"ZOOM +";position:absolute;inset:auto 14px 14px auto;font-size:9px;font-weight:800;letter-spacing:2px;color:var(--green);opacity:0;transform:translateY(8px);transition:.35s ease;pointer-events:none}
+.gallery button:hover::after{opacity:1;transform:none}
+
+/* ---------- Horaires : ligne du jour ---------- */
+.schedule div{transition:background .3s ease,padding .3s ease}
+.schedule div.current b{color:var(--green);animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.55}}
+
+/* ---------- WhatsApp flottant ---------- */
+.wa{transition:transform .25s ease,box-shadow .25s ease;animation:waPulse 3s ease-in-out infinite}
+.wa:hover{transform:translateY(-4px) scale(1.06);animation-play-state:paused}
+@keyframes waPulse{0%,100%{box-shadow:0 0 0 0 #d8ff3e55}50%{box-shadow:0 0 0 12px #d8ff3e00}}
+
+/* ---------- Lightbox animée ---------- */
+#lightbox{opacity:0;pointer-events:none;transition:opacity .35s ease}
+#lightbox.open{opacity:1;pointer-events:auto}
+#lightbox img{transform:scale(.88);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+#lightbox.open img{transform:scale(1)}
+#lightbox button{transition:transform .25s ease,color .25s ease}
+#lightbox button:hover{transform:rotate(90deg) scale(1.1);color:var(--green)}
+
+/* ---------- Formulaire : focus animé + statut ---------- */
+#form label{display:block}
+#form input,#form textarea{transition:border-color .3s ease,box-shadow .3s ease}
+#form input:focus,#form textarea:focus{outline:0;border-color:var(--green);box-shadow:0 0 0 3px #d8ff3e22}
+#status{transition:opacity .4s ease}
+#form.sent #status{opacity:1;animation:fadeUp .5s ease both}
+
+/* ---------- Lien retour en haut ---------- */
+footer a{transition:color .25s ease,letter-spacing .25s ease}
+footer a:hover{color:var(--green);letter-spacing:2px}
+
+/* ---------- Diaporama de la bannière (4 images, crossfade + Ken Burns) ---------- */
+.heroimg{will-change:transform}
+.heroimg span{position:absolute;inset:0;opacity:0;transform:scale(1.09);transition:opacity 1.8s ease-in-out,transform 9s cubic-bezier(.2,.5,.3,1);will-change:opacity,transform;pointer-events:none}
+.heroimg span:nth-child(1){background:center/cover no-repeat url('../assets/images/hero/salle-1.jpg')}
+.heroimg span:nth-child(2){background:center/cover no-repeat url('../assets/images/hero/salle-2.jpg')}
+.heroimg span:nth-child(3){background:center/cover no-repeat url('../assets/images/services/musculation.jpg')}
+.heroimg span:nth-child(4){background:center/cover no-repeat url('../assets/images/services/fitness.jpg')}
+.heroimg span.on{opacity:1;transform:scale(1)}
+.herodots{position:absolute;right:6vw;bottom:12vh;z-index:3;display:flex;gap:10px;animation:fadeUp 1s 1.2s cubic-bezier(.2,.7,.2,1) both}
+.herodots button{width:12px;height:12px;padding:0;border:0;border-radius:999px;background:#ffffff40;cursor:pointer;transition:width .45s cubic-bezier(.2,.7,.2,1),background .45s ease,box-shadow .45s ease}
+.herodots button:hover{background:#ffffff90}
+.herodots button.on{width:34px;background:var(--green);box-shadow:0 0 14px #d8ff3e88}
+
+/* ---------- Accessibilité : mouvement réduit ---------- */
+@media(prefers-reduced-motion:reduce){
+  .herodots{position:absolute;right:22px;bottom:150px}
+}
+@media(max-width:700px){
+  .herodots{right:22px;bottom:150px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
