@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.oyofitness.cg/sitemap.xml
+
+Sitemap: https://ffacultatif1-ux.github.io/oyo-fitness-center/sitemap.xml
